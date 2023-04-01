@@ -15,14 +15,14 @@
             <div class="weather__now">
 
                 <div class="weather__icons">
-                    <img src="images/sun.svg" alt="" height="100px" width="100px">
+                    <div id="icon"></div>
 
                 </div>
-                <div class="weather__temp">0</div>
+                <div class="weather__temp"></div>
             </div>
             <div class="search">
-                <input type="search" value="Kaunas" id="search" placeholder="City">
-                <button class="btn" type="btn">
+                <input type="search" class="search_x" value="" id="city" placeholder="City">
+                <button class="btn" id="btn" type="btn">
                     GO
                 </button>
             </div>
@@ -30,15 +30,20 @@
 
             <!-- 2nd block weather forecast -->
             <div class="weather__forecast">
-                <h3 class="today">Today</h3>
+                <div class="day">
+
+                    <h3 class="today">Today</h3>
+                    <span class="date">00/00/00</span>
+                </div>
                 <div class="forecast__grid">
 
 
                     <div class="forecast__twelve grid">
-                        <div class="forecast__twelve dgrs">
+                        <div class="forecast__twelve twelve dgrs">
                             0
                         </div>
-                        <div class="forecast__icon weather__icon">
+
+                        <div id="airConditionTvelweSky" class="forecast__icon weather__icon ">
 
                         </div>
                         <div class="forecast__time">
@@ -47,10 +52,11 @@
                     </div>
                     <!-- 15:00 -->
                     <div class="forecast__three grid">
-                        <div class="forecast__three dgrs">
+                        <div class="forecast__three three dgrs">
                             0
                         </div>
-                        <div class="forecast__icon  weather__icon">
+
+                        <div id="airConditionThreeSky" class="forecast__icon  weather__icon">
 
                         </div>
                         <div class="forecast__time">
@@ -60,10 +66,10 @@
 
                     <!-- 18:00 -->
                     <div class="forecast__six grid">
-                        <div class="forecast__six dgrs">
+                        <div class="forecast__six  six dgrs">
                             0
                         </div>
-                        <div class="forecast__icon  weather__icon">
+                        <div id="airConditionSixSky" class="forecast__icon  weather__icon">
 
                         </div>
                         <div class="forecast__time">
@@ -73,10 +79,10 @@
 
                     <!-- 21:00 -->
                     <div class="forecast__nine grid">
-                        <div class="forecast__nine dgrs">
+                        <div class="forecast__nine  nine dgrs">
                             0
                         </div>
-                        <div class="forecast__icon  weather__icon">
+                        <div id="airConditionNineSky" class="forecast__icon  weather__icon">
 
                         </div>
                         <div class="forecast__time">
@@ -88,7 +94,7 @@
 
         </div>
     </div>
-
+    <script src="main.js"></script>
 </body>
 
 </html>
