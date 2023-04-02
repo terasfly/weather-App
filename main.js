@@ -6,7 +6,9 @@ const weatherClass = {
     Rain: 'images/rain.svg',
     Clear: 'images/sun.svg',
     Snow: 'images/snow.svg',
+    lightRain: 'images/light.svg'
 }
+
 
 // https://api.openweathermap.org/data/2.5/forecast?q=kaunas&appid=aa2ed12d93ba18e5ef77cfe8606163d5&units=metric
 
@@ -23,13 +25,42 @@ btn.addEventListener('click', () => {
                 sixTime(data)
                 nineTime(data)
 
-
+                const realTime = data.list[0].dt_txt
+                const realTimeSplit = realTime.split(' ')[0]
+                const realTimeOnly = realTimeSplit.substring(0, 10)
+                document.getElementById('date').textContent = realTimeOnly
 
                 // 
                 // weather now
                 const temp = data.list[0].main.temp
                 const roundTempNow = Math.round(temp)
                 document.querySelector('.weather__temp').textContent = roundTempNow;
+                //   1st time
+                const time = data.list[0].dt_txt
+                console.log(time)
+                const dataSplit = time.split(' ')[1]
+                const timeOnly = dataSplit.substring(0, 5)
+                document.getElementById('first__time').textContent = timeOnly
+                    // 2nd time
+                const time2 = data.list[1].dt_txt
+                console.log(time2)
+                const dataSplit2 = time2.split(' ')[1]
+                const timeOnly2 = dataSplit2.substring(0, 5)
+                document.getElementById('second__time').textContent = timeOnly2
+                    //    3rd time     
+
+                const time3 = data.list[2].dt_txt
+                    // console.log(time2)
+                const dataSplit3 = time3.split(' ')[1]
+                const timeOnly3 = dataSplit3.substring(0, 5)
+                document.getElementById('third__time').textContent = timeOnly3
+                    // 4 time
+                const time4 = data.list[3].dt_txt
+                    // console.log(time2)
+                const dataSplit4 = time4.split(' ')[1]
+                const timeOnly4 = dataSplit4.substring(0, 5)
+                document.getElementById('four__time').textContent = timeOnly4
+
 
                 const wheatherConditionNow = data.list[0].weather[0].main;
                 const wheatherIcon = document.createElement('img')
@@ -53,11 +84,13 @@ btn.addEventListener('click', () => {
     })
     // 12:00 o'clock
 function twelveTime(data) {
-    const tempTwelve = data.list[4].main.temp;
+    const tempTwelve = data.list[2].main.temp;
     const roundTempTwelve = Math.round(tempTwelve)
     document.querySelector('.twelve').textContent = roundTempTwelve;
 
-    const airConditionTvelweTime = data.list[0].weather[0].main
+    const airConditionTvelweTime = data.list[2].weather[0].main;
+
+
     const airConditionTvelwe = document.createElement('img')
     airConditionTvelwe.src = weatherClass[airConditionTvelweTime]
     airConditionTvelwe.style.width = '50px'
