@@ -33,6 +33,11 @@
     margin: 100px 0;
 }
 
+.locationCity {
+    font-size: 50px;
+    color: #fff;
+}
+
 .weather__temp {
     font-size: 64px;
     font-weight: 600;
@@ -143,4 +148,10 @@ input {
     background-repeat: no-repeat;
     width: 50px;
     height: 50px;
+}
+
+.weather__now {
+    font-size: 50px;
+    font-family: serif;
+    color: #fff;
 }
