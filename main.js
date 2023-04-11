@@ -4,6 +4,7 @@ const defaultCity = 'Belfast'
 
 
 
+
 const weatherClass = {
     Clouds: 'images/cloud.svg',
     broken: 'images/broken.svg',
@@ -104,9 +105,12 @@ window.onload = () => {
 btn.addEventListener('click', () => {
 
 
-
-
     const city = document.getElementById('city').value;
+    const capitalizedCity = city.charAt(0).toUpperCase() + city.slice(1);
+    document.querySelector('.locationCity').textContent = capitalizedCity;
+
+
+
 
     // navigator.geolocation.getCurrentPosition((position) => {
     //     const lat = position.coords.latitude;
@@ -117,15 +121,16 @@ btn.addEventListener('click', () => {
     fetch(url)
         .then((Response) => Response.json())
         .then((data) => {
-            // displayForecast(data);
-
-            // console.log(url)
 
 
             twelveTime(data)
             threeTime(data)
             sixTime(data)
             nineTime(data)
+
+            btnChangeTemp(data)
+
+
 
             const realTime = data.list[0].dt_txt
             const realTimeSplit = realTime.split(' ')[0]
@@ -197,6 +202,21 @@ btn.addEventListener('click', () => {
     // }
 
 })
+
+
+
+
+
+function btnChangeTemp(data) {
+    const btnCity = data.list[0].main.temp
+    const roundBtnCity = Math.round(btnCity)
+    document.querySelector('.weather__temp').textContent = roundBtnCity
+
+    // document.querySelector('.locationCity').textContent = city
+
+
+
+}
 
 // 12:00 o'clock
 function twelveTime(data) {
