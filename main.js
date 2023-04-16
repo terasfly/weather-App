@@ -7,27 +7,6 @@ let startY, currentY, previousY = 0;
 let isDragging = false;
 let currentIndex = 0;
 
-container.addEventListener('touchstart', (e) => {
-  startY = e.touches[0].clientY;
-  isDragging = true;
-});
-
-container.addEventListener('touchmove', (e) => {
-  if (isDragging) {
-    e.preventDefault();
-    currentY = e.touches[0].clientY;
-    let distanceY = currentY - startY;
-    container.style.transform = `translateY(${previousY + distanceY}px)`;
-  }
-});
-
-container.addEventListener('touchend', (e) => {
-  isDragging = false;
-  previousY += currentY - startY;
-  currentIndex = Math.round(Math.abs(previousY / container.clientHeight) * 7);
-  container.style.transform = `translateY(-${currentIndex * 100}%)`;
-});
-
 
 
 const weatherClass = {
