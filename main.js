@@ -2,6 +2,32 @@ const btn = document.getElementById('btn');
 const api = 'aa2ed12d93ba18e5ef77cfe8606163d5'
 const defaultCity = 'Belfast'
 
+const container = document.querySelector('.forecast__grid');
+let startY, currentY, previousY = 0;
+let isDragging = false;
+let currentIndex = 0;
+
+container.addEventListener('touchstart', (e) => {
+  startY = e.touches[0].clientY;
+  isDragging = true;
+});
+
+container.addEventListener('touchmove', (e) => {
+  if (isDragging) {
+    e.preventDefault();
+    currentY = e.touches[0].clientY;
+    let distanceY = currentY - startY;
+    container.style.transform = `translateY(${previousY + distanceY}px)`;
+  }
+});
+
+container.addEventListener('touchend', (e) => {
+  isDragging = false;
+  previousY += currentY - startY;
+  currentIndex = Math.round(Math.abs(previousY / container.clientHeight) * 7);
+  container.style.transform = `translateY(-${currentIndex * 100}%)`;
+});
+
 
 
 
