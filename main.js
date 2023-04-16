@@ -30,17 +30,17 @@ container.addEventListener('touchend', (e) => {
 
 
 
-
 const weatherClass = {
     Clouds: 'images/cloud.svg',
     broken: 'images/broken.svg',
     Clear: 'images/sun.svg',
     Snow: 'images/snow.svg',
-    few: 'images/light.svg',
+
     clear: 'images/sun.svg',
     light: 'images/lightRain.svg',
     overcast: 'images/cloud.svg',
-    scattered: 'images/broken.svg'
+    scattered: 'images/broken.svg',
+    moderate: 'images/havy.svg'
 
 }
 
