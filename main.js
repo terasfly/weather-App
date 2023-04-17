@@ -14,7 +14,7 @@ const weatherClass = {
     broken: 'images/broken.svg',
     Clear: 'images/sun.svg',
     Snow: 'images/snow.svg',
-
+    few: 'images/broken.svg',
     clear: 'images/sun.svg',
     light: 'images/lightRain.svg',
     overcast: 'images/cloud.svg',
