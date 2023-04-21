@@ -82,7 +82,7 @@ window.onload = () => {
 
                 const openWindow = data.list[0].main.temp;
                 const openWindowDecimal = Math.round(openWindow)
-                document.querySelector('.weather__temp').textContent = openWindowDecimal;
+                document.querySelector('.weather__temp').textContent = openWindowDecimal + '°';
 
                 const openWindowIcon = data.list[0].weather[0].description
                 console.log(openWindowIcon)
@@ -214,7 +214,7 @@ btn.addEventListener('click', () => {
 function btnChangeTemp(data) {
     const btnCity = data.list[0].main.temp
     const roundBtnCity = Math.round(btnCity)
-    document.querySelector('.weather__temp').textContent = roundBtnCity
+    document.querySelector('.weather__temp').textContent = roundBtnCity + '°'
 
     // document.querySelector('.locationCity').textContent = city
 
@@ -238,12 +238,16 @@ function twelveTime(data) {
 
     const tempTwelve = data.list[0].main.temp;
     const roundTempTwelve = Math.round(tempTwelve)
-    document.querySelector('.twelve').textContent = roundTempTwelve;
+    document.querySelector('.twelve').textContent = roundTempTwelve + '°';
+
+
+
+    console.log(roundTempTwelve)
 
     const airConditionTvelweTime = data.list[0].weather[0].description;
     let description1 = airConditionTvelweTime.split(' ')[0];
     console.log(description1)
-    if (makeNumber > 21 || makeNumber < 6) {
+    if (makeNumber > 20 || makeNumber < 6) {
 
         if (description1 === 'clear') {
             description1 = 'night'
@@ -285,11 +289,12 @@ function threeTime(data) {
 
     const tempThree = data.list[1].main.temp;
     const roundTempThree = Math.round(tempThree)
-    document.querySelector('.three').textContent = roundTempThree;
+    document.querySelector('.three').textContent = roundTempThree + '°'
+        // document.querySelector('.three').textContent = roundTempThree;
 
     const airConditionThreeTime = data.list[1].weather[0].description;
     let description2 = airConditionThreeTime.split(' ')[0]
-    if (makeNumber > 21 || makeNumber < 6) {
+    if (makeNumber > 20 || makeNumber < 6) {
 
         if (description2 === 'clear') {
             description2 = 'night'
@@ -326,11 +331,12 @@ function sixTime(data) {
 
     const tempSix = data.list[2].main.temp;
     const roundTempSix = Math.round(tempSix)
-    document.querySelector('.six').textContent = roundTempSix;
+    document.querySelector('.six').textContent = roundTempSix + '°'
+        // document.querySelector('.six').textContent = roundTempSix;
 
     const airConditionSixTime = data.list[2].weather[0].description;
     let description3 = airConditionSixTime.split(' ')[0]
-    if (makeNumber > 21 || makeNumber < 6) {
+    if (makeNumber > 20 || makeNumber < 6) {
 
         if (description3 === 'clear') {
             description3 = 'night'
@@ -368,11 +374,11 @@ function nineTime(data) {
 
     const tempNine = data.list[3].main.temp;
     const roundTempNine = Math.round(tempNine)
-    document.querySelector('.nine').textContent = roundTempNine;
+    document.querySelector('.nine').textContent = roundTempNine + '°';
 
     const airConditionNineTime = data.list[3].weather[0].description;
     let description4 = airConditionNineTime.split(' ')[0]
-    if (makeNumber > 21|| makeNumber < 6) {
+    if (makeNumber > 20 || makeNumber < 6) {
 
         if (description4 === 'clear') {
             description4 = 'night'
