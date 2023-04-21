@@ -372,7 +372,7 @@ function nineTime(data) {
 
     const airConditionNineTime = data.list[3].weather[0].description;
     let description4 = airConditionNineTime.split(' ')[0]
-    if (makeNumber > 21 || makeNumber < 6) {
+    if (makeNumber > 21 && makeNumber < 6) {
 
         if (description4 === 'clear') {
             description4 = 'night'
