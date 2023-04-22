@@ -336,7 +336,7 @@ function sixTime(data) {
 
     const airConditionSixTime = data.list[2].weather[0].description;
     let description3 = airConditionSixTime.split(' ')[0]
-    if (makeNumber > 20 || makeNumber < 6) {
+    if (makeNumber >= 21 || makeNumber < 6) {
 
         if (description3 === 'clear') {
             description3 = 'night'
