@@ -360,7 +360,7 @@ function sixTime(data) {
 }
 
 function nineTime(data) {
-    const time = data.list[2].dt_txt
+    const time = data.list[3].dt_txt
     console.log(time)
 
     const dataSplit = time.split(' ')[1]
