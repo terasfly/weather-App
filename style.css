@@ -47,6 +47,14 @@
     color: #fff;
 }
 
+.weather__temp::after {
+    content: "°";
+    font-size: 45px;
+    /* adjust the font size as per your preference */
+    vertical-align: super;
+    /* to align the symbol with the temperature value */
+}
+
 .search {
     display: flex;
     align-items: center;
@@ -134,6 +142,12 @@ input {
 .dgrs {
     font-size: 30px;
     margin-bottom: 15px;
+}
+
+.dgrs::after {
+    content: "°";
+    font-size: 25px;
+    vertical-align: super;
 }
 
 .grid {
