@@ -22,6 +22,20 @@ const weatherClass = {
 
 }
 
+function dddd(data) {
+    const openWindowIcon = data.list[0].weather[0].description
+    console.log(openWindowIcon)
+    const openWindowDescription = openWindowIcon.split(' ')[0]
+    const openWindowShowIcon = document.createElement('img')
+    openWindowShowIcon.src = weatherClass[openWindowDescription]
+    openWindowShowIcon.style.width = '120px'
+    openWindowShowIcon.style.height = '120px'
+
+    iconNow = document.getElementById('icon__now')
+
+    iconNow.innerHTML = '';
+    iconNow.appendChild(openWindowShowIcon)
+}
 
 window.onload = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -98,7 +112,7 @@ window.onload = () => {
 
                 const openWindow = data.list[0].main.temp;
                 const openWindowDecimal = Math.round(openWindow)
-                document.querySelector('.weather__temp').textContent = openWindowDecimal + '°';
+                document.querySelector('.weather__temp').textContent = openWindowDecimal;
 
                 // const openWindowIcon = data.list[0].weather[0].description
                 // console.log(openWindowIcon)
@@ -149,14 +163,15 @@ btn.addEventListener('click', () => {
             nineTime(data)
 
             btnChangeTemp(data)
-                // WEATHER NOW FOR SELECTED CITY
-                // const openWindowIcon = data.list[0].weather[0].description
-                // console.log(openWindowIcon)
-                // const openWindowDescription = openWindowIcon.split(' ')[0]
-                // const openWindowShowIcon = document.createElement('img')
-                // openWindowShowIcon.src = weatherClass[openWindowDescription]
-                // openWindowShowIcon.style.width = '120px'
-                // openWindowShowIcon.style.height = '120px'
+
+            // WEATHER NOW FOR SELECTED CITY
+            // const openWindowIcon = data.list[0].weather[0].description
+            // console.log(openWindowIcon)
+            // const openWindowDescription = openWindowIcon.split(' ')[0]
+            // const openWindowShowIcon = document.createElement('img')
+            // openWindowShowIcon.src = weatherClass[openWindowDescription]
+            // openWindowShowIcon.style.width = '120px'
+            // openWindowShowIcon.style.height = '120px'
 
             // iconNow = document.getElementById('icon__now')
 
@@ -217,7 +232,7 @@ btn.addEventListener('click', () => {
 function btnChangeTemp(data) {
     const btnCity = data.list[0].main.temp
     const roundBtnCity = Math.round(btnCity)
-    document.querySelector('.weather__temp').textContent = roundBtnCity + '°'
+    document.querySelector('.weather__temp').textContent = roundBtnCity
 
     // document.querySelector('.locationCity').textContent = city
 
@@ -243,7 +258,7 @@ function twelveTime(data) {
 
     const tempTwelve = data.list[0].main.temp;
     const roundTempTwelve = Math.round(tempTwelve)
-    document.querySelector('.twelve').textContent = roundTempTwelve + '°';
+    document.querySelector('.twelve').textContent = roundTempTwelve;
 
 
 
@@ -303,7 +318,7 @@ function threeTime(data) {
 
     const tempThree = data.list[1].main.temp;
     const roundTempThree = Math.round(tempThree)
-    document.querySelector('.three').textContent = roundTempThree + '°'
+    document.querySelector('.three').textContent = roundTempThree
         // document.querySelector('.three').textContent = roundTempThree;
 
     const airConditionThreeTime = data.list[1].weather[0].description;
@@ -345,7 +360,7 @@ function sixTime(data) {
 
     const tempSix = data.list[2].main.temp;
     const roundTempSix = Math.round(tempSix)
-    document.querySelector('.six').textContent = roundTempSix + '°'
+    document.querySelector('.six').textContent = roundTempSix
         // document.querySelector('.six').textContent = roundTempSix;
 
     const airConditionSixTime = data.list[2].weather[0].description;
@@ -388,7 +403,7 @@ function nineTime(data) {
 
     const tempNine = data.list[3].main.temp;
     const roundTempNine = Math.round(tempNine)
-    document.querySelector('.nine').textContent = roundTempNine + '°';
+    document.querySelector('.nine').textContent = roundTempNine;
 
     const airConditionNineTime = data.list[3].weather[0].description;
     let description4 = airConditionNineTime.split(' ')[0]
@@ -412,21 +427,6 @@ function nineTime(data) {
     airConditionNineSky.innerHTML = ''
     airConditionNineSky.appendChild(airConditionNine)
 
-}
-
-function dddd(veikia) {
-    const openWindowIcon = data.list[0].weather[0].description
-    console.log(openWindowIcon)
-    const openWindowDescription = openWindowIcon.split(' ')[0]
-    const openWindowShowIcon = document.createElement('img')
-    openWindowShowIcon.src = weatherClass[openWindowDescription]
-    openWindowShowIcon.style.width = '120px'
-    openWindowShowIcon.style.height = '120px'
-
-    iconNow = document.getElementById('icon__now')
-
-    iconNow.innerHTML = '';
-    iconNow.appendChild(openWindowShowIcon)
 }
 
 function dddd(data) {
