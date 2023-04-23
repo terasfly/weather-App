@@ -4,7 +4,7 @@ const defaultCity = 'Belfast'
 
 
 
-
+let iconNow = document.getElementById('icon__now')
 
 const weatherClass = {
     Clouds: 'images/cloud.svg',
@@ -84,18 +84,18 @@ window.onload = () => {
                 const openWindowDecimal = Math.round(openWindow)
                 document.querySelector('.weather__temp').textContent = openWindowDecimal + '°';
 
-                const openWindowIcon = data.list[0].weather[0].description
-                console.log(openWindowIcon)
-                const openWindowDescription = openWindowIcon.split(' ')[0]
-                const openWindowShowIcon = document.createElement('img')
-                openWindowShowIcon.src = weatherClass[openWindowDescription]
-                openWindowShowIcon.style.width = '120px'
-                openWindowShowIcon.style.height = '120px'
+                // const openWindowIcon = data.list[0].weather[0].description
+                // console.log(openWindowIcon)
+                // const openWindowDescription = openWindowIcon.split(' ')[0]
+                // const openWindowShowIcon = document.createElement('img')
+                // openWindowShowIcon.src = weatherClass[openWindowDescription]
+                // openWindowShowIcon.style.width = '120px'
+                // openWindowShowIcon.style.height = '120px'
 
-                const iconNow = document.getElementById('icon__now')
+                // iconNow = document.getElementById('icon__now')
 
-                iconNow.innerHTML = '';
-                iconNow.appendChild(openWindowShowIcon)
+                // iconNow.innerHTML = '';
+                // iconNow.appendChild(openWindowShowIcon)
 
                 // document.querySelector('.locationCity').textContent =
 
@@ -120,7 +120,7 @@ btn.addEventListener('click', () => {
     //     const lat = position.coords.latitude;
     //     const lon = position.coords.longitude;
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api}&units=metric`;
-    // const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lat=${lat}&lon=${lon}&appid=${api}&units=metric`;
+
     console.log(url)
     fetch(url)
         .then((Response) => Response.json())
@@ -133,40 +133,27 @@ btn.addEventListener('click', () => {
             nineTime(data)
 
             btnChangeTemp(data)
+                // WEATHER NOW FOR SELECTED CITY
+            const openWindowIcon = data.list[0].weather[0].description
+            console.log(openWindowIcon)
+            const openWindowDescription = openWindowIcon.split(' ')[0]
+            const openWindowShowIcon = document.createElement('img')
+            openWindowShowIcon.src = weatherClass[openWindowDescription]
+            openWindowShowIcon.style.width = '120px'
+            openWindowShowIcon.style.height = '120px'
 
+            iconNow = document.getElementById('icon__now')
 
+            iconNow.innerHTML = '';
+            iconNow.appendChild(openWindowShowIcon)
+
+            // **********************************
 
             const realTime = data.list[0].dt_txt
             const realTimeSplit = realTime.split(' ')[0]
             const realTimeOnly = realTimeSplit.substring(0, 10)
             document.getElementById('date').textContent = realTimeOnly
 
-            // 
-            // weather now
-
-            // const roundTempNow = Math.round(temp)
-            // document.querySelector('.weather__temp').textContent = roundTempNow;
-
-
-            // wheatherCondition NOW
-
-
-            // const wheatherConditionNow = data.list[0].weather[0].description
-            // const description1 = wheatherConditionNow.split(' ')[0]
-
-            // console.log(description1)
-
-
-            // const wheatherIcon = document.createElement('img')
-            // wheatherIcon.src = weatherClass[description1]
-            // wheatherIcon.style.width = '100px'
-            // wheatherIcon.style.height = '100px'
-
-            // da
-            // const icon = document.getElementById('icon')
-            // icon.innerHTML = '';
-            // // console.log(wheatherIcon)
-            // icon.appendChild(wheatherIcon)
 
             // weather 15 o'clock
 
@@ -222,16 +209,33 @@ function btnChangeTemp(data) {
 
 }
 
+function weatherNow() {
+
+
+    const openWindowIcon = data.list[0].weather[0].description
+    console.log(openWindowIcon)
+    const openWindowDescription = openWindowIcon.split(' ')[0]
+    const openWindowShowIcon = document.createElement('img')
+    openWindowShowIcon.src = weatherClass[openWindowDescription]
+    openWindowShowIcon.style.width = '120px'
+    openWindowShowIcon.style.height = '120px'
+
+    iconNow = document.getElementById('icon__now')
+
+    iconNow.innerHTML = '';
+    iconNow.appendChild(openWindowShowIcon)
+}
 // 12:00 o'clock
 function twelveTime(data) {
+    // weatherNow()
     const time = data.list[0].dt_txt
     console.log(time)
 
     const dataSplit = time.split(' ')[1]
-
     const timeOnly = dataSplit.substring(0, 5)
-        // console.log(timeOnly)
-        // document.getElementById('first__time').textContent = timeOnly
+
+    // console.log(timeOnly)
+    // document.getElementById('first__time').textContent = timeOnly
 
     const makeNumber = parseInt(timeOnly)
     console.log(makeNumber)
@@ -242,11 +246,16 @@ function twelveTime(data) {
 
 
 
-    console.log(roundTempTwelve)
+
 
     const airConditionTvelweTime = data.list[0].weather[0].description;
+
     let description1 = airConditionTvelweTime.split(' ')[0];
     console.log(description1)
+
+
+
+
     if (makeNumber > 20 || makeNumber < 6) {
 
         if (description1 === 'clear') {
@@ -259,9 +268,7 @@ function twelveTime(data) {
             description1 = 'nightClouds'
         }
     }
-    // if (hour >= 1 || hour <= 2) {
-    //     description1 = 'Snow'; // set the weather condition to Snow if it's after 21:00
-    // }
+
     const airConditionTvelwe = document.createElement('img')
     airConditionTvelwe.src = weatherClass[description1]
     airConditionTvelwe.style.width = '50px'
@@ -272,8 +279,14 @@ function twelveTime(data) {
     airConditionTvelweSky.appendChild(airConditionTvelwe)
 
 
+
+
+
+
 }
-// 15:00 o'clock
+
+
+
 function threeTime(data) {
     const time = data.list[1].dt_txt
     console.log(time)
@@ -336,7 +349,7 @@ function sixTime(data) {
 
     const airConditionSixTime = data.list[2].weather[0].description;
     let description3 = airConditionSixTime.split(' ')[0]
-    if (makeNumber >= 21 || makeNumber < 6) {
+    if (makeNumber > 20 || makeNumber < 6) {
 
         if (description3 === 'clear') {
             description3 = 'night'
@@ -378,7 +391,7 @@ function nineTime(data) {
 
     const airConditionNineTime = data.list[3].weather[0].description;
     let description4 = airConditionNineTime.split(' ')[0]
-    if (makeNumber >=21 || makeNumber < 6) {
+    if (makeNumber >= 21 || makeNumber < 6) {
 
         if (description4 === 'clear') {
             description4 = 'night'
@@ -399,33 +412,3 @@ function nineTime(data) {
     airConditionNineSky.appendChild(airConditionNine)
 
 }
-
-// function displayForecast(data) {
-//     // use the weather data to display the forecast on the page
-//     // for example, you can update the DOM with the forecast information
-//     const cityName = data.city.name;
-//     document.getElementById('city').value = defaultCity;
-//     const currentTemp = data.list[0].main.temp;
-//     const roundTempNow = Math.round(currentTemp)
-//     document.querySelector('.weather__temp').textContent = roundTempNow;
-//     // const currentWeather = data.list[0].weather[0].main;
-//     // ...
-//     const wheatherConditionNow = data.list[0].weather[0].description
-//     const description1 = wheatherConditionNow.split(' ')[0]
-
-
-
-
-//     const wheatherIcon = document.createElement('img')
-//     wheatherIcon.src = weatherClass[description1]
-//     wheatherIcon.style.width = '100px'
-//     wheatherIcon.style.height = '100px'
-
-
-//     const icon = document.getElementById('icon')
-//     icon.innerHTML = '';
-//     // console.log(wheatherIcon)
-//     icon.appendChild(wheatherIcon)
-
-
-// }
