@@ -22,6 +22,7 @@ const weatherClass = {
 
 }
 
+
 window.onload = () => {
     navigator.geolocation.getCurrentPosition((position) => {
         const lat = position.coords.latitude;
@@ -40,6 +41,21 @@ window.onload = () => {
             .then((Response) => Response.json())
             .then((data) => {
                 // get location NAME
+                dddd(data)
+
+
+                // const openWindowIcon = data.list[0].weather[0].description
+                // console.log(openWindowIcon)
+                // const openWindowDescription = openWindowIcon.split(' ')[0]
+                // const openWindowShowIcon = document.createElement('img')
+                // openWindowShowIcon.src = weatherClass[openWindowDescription]
+                // openWindowShowIcon.style.width = '120px'
+                // openWindowShowIcon.style.height = '120px'
+
+                // iconNow = document.getElementById('icon__now')
+
+                // iconNow.innerHTML = '';
+                // iconNow.appendChild(openWindowShowIcon)
 
                 twelveTime(data)
                 threeTime(data)
@@ -126,7 +142,7 @@ btn.addEventListener('click', () => {
         .then((Response) => Response.json())
         .then((data) => {
 
-
+            dddd(data)
             twelveTime(data)
             threeTime(data)
             sixTime(data)
@@ -134,18 +150,18 @@ btn.addEventListener('click', () => {
 
             btnChangeTemp(data)
                 // WEATHER NOW FOR SELECTED CITY
-            const openWindowIcon = data.list[0].weather[0].description
-            console.log(openWindowIcon)
-            const openWindowDescription = openWindowIcon.split(' ')[0]
-            const openWindowShowIcon = document.createElement('img')
-            openWindowShowIcon.src = weatherClass[openWindowDescription]
-            openWindowShowIcon.style.width = '120px'
-            openWindowShowIcon.style.height = '120px'
+                // const openWindowIcon = data.list[0].weather[0].description
+                // console.log(openWindowIcon)
+                // const openWindowDescription = openWindowIcon.split(' ')[0]
+                // const openWindowShowIcon = document.createElement('img')
+                // openWindowShowIcon.src = weatherClass[openWindowDescription]
+                // openWindowShowIcon.style.width = '120px'
+                // openWindowShowIcon.style.height = '120px'
 
-            iconNow = document.getElementById('icon__now')
+            // iconNow = document.getElementById('icon__now')
 
-            iconNow.innerHTML = '';
-            iconNow.appendChild(openWindowShowIcon)
+            // iconNow.innerHTML = '';
+            // iconNow.appendChild(openWindowShowIcon)
 
             // **********************************
 
@@ -209,22 +225,7 @@ function btnChangeTemp(data) {
 
 }
 
-function weatherNow() {
 
-
-    const openWindowIcon = data.list[0].weather[0].description
-    console.log(openWindowIcon)
-    const openWindowDescription = openWindowIcon.split(' ')[0]
-    const openWindowShowIcon = document.createElement('img')
-    openWindowShowIcon.src = weatherClass[openWindowDescription]
-    openWindowShowIcon.style.width = '120px'
-    openWindowShowIcon.style.height = '120px'
-
-    iconNow = document.getElementById('icon__now')
-
-    iconNow.innerHTML = '';
-    iconNow.appendChild(openWindowShowIcon)
-}
 // 12:00 o'clock
 function twelveTime(data) {
     // weatherNow()
@@ -256,7 +257,7 @@ function twelveTime(data) {
 
 
 
-    if (makeNumber > 20 || makeNumber < 6) {
+    if (makeNumber >= 21 || makeNumber <= 6) {
 
         if (description1 === 'clear') {
             description1 = 'night'
@@ -307,7 +308,7 @@ function threeTime(data) {
 
     const airConditionThreeTime = data.list[1].weather[0].description;
     let description2 = airConditionThreeTime.split(' ')[0]
-    if (makeNumber > 20 || makeNumber < 6) {
+    if (makeNumber >= 21 || makeNumber <= 6) {
 
         if (description2 === 'clear') {
             description2 = 'night'
@@ -349,7 +350,7 @@ function sixTime(data) {
 
     const airConditionSixTime = data.list[2].weather[0].description;
     let description3 = airConditionSixTime.split(' ')[0]
-    if (makeNumber > 20 || makeNumber < 6) {
+    if (makeNumber >= 21 || makeNumber <= 6) {
 
         if (description3 === 'clear') {
             description3 = 'night'
@@ -391,7 +392,7 @@ function nineTime(data) {
 
     const airConditionNineTime = data.list[3].weather[0].description;
     let description4 = airConditionNineTime.split(' ')[0]
-    if (makeNumber >= 21 || makeNumber < 6) {
+    if (makeNumber >= 21 || makeNumber <= 6) {
 
         if (description4 === 'clear') {
             description4 = 'night'
@@ -411,4 +412,34 @@ function nineTime(data) {
     airConditionNineSky.innerHTML = ''
     airConditionNineSky.appendChild(airConditionNine)
 
+}
+
+function dddd(veikia) {
+    const openWindowIcon = data.list[0].weather[0].description
+    console.log(openWindowIcon)
+    const openWindowDescription = openWindowIcon.split(' ')[0]
+    const openWindowShowIcon = document.createElement('img')
+    openWindowShowIcon.src = weatherClass[openWindowDescription]
+    openWindowShowIcon.style.width = '120px'
+    openWindowShowIcon.style.height = '120px'
+
+    iconNow = document.getElementById('icon__now')
+
+    iconNow.innerHTML = '';
+    iconNow.appendChild(openWindowShowIcon)
+}
+
+function dddd(data) {
+    const openWindowIcon = data.list[0].weather[0].description
+    console.log(openWindowIcon)
+    const openWindowDescription = openWindowIcon.split(' ')[0]
+    const openWindowShowIcon = document.createElement('img')
+    openWindowShowIcon.src = weatherClass[openWindowDescription]
+    openWindowShowIcon.style.width = '120px'
+    openWindowShowIcon.style.height = '120px'
+
+    iconNow = document.getElementById('icon__now')
+
+    iconNow.innerHTML = '';
+    iconNow.appendChild(openWindowShowIcon)
 }
