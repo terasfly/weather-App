@@ -272,7 +272,7 @@ function twelveTime(data) {
 
 
 
-    if (makeNumber >= 21 || makeNumber <= 6) {
+    if (makeNumber >= 21 || makeNumber < 6) {
 
         if (description1 === 'clear') {
             description1 = 'night'
@@ -323,7 +323,7 @@ function threeTime(data) {
 
     const airConditionThreeTime = data.list[1].weather[0].description;
     let description2 = airConditionThreeTime.split(' ')[0]
-    if (makeNumber >= 21 || makeNumber <= 6) {
+    if (makeNumber >= 21 || makeNumber < 6) {
 
         if (description2 === 'clear') {
             description2 = 'night'
@@ -365,7 +365,7 @@ function sixTime(data) {
 
     const airConditionSixTime = data.list[2].weather[0].description;
     let description3 = airConditionSixTime.split(' ')[0]
-    if (makeNumber >= 21 || makeNumber <= 6) {
+    if (makeNumber >= 21 || makeNumber < 6) {
 
         if (description3 === 'clear') {
             description3 = 'night'
@@ -407,7 +407,7 @@ function nineTime(data) {
 
     const airConditionNineTime = data.list[3].weather[0].description;
     let description4 = airConditionNineTime.split(' ')[0]
-    if (makeNumber >= 21 || makeNumber <= 6) {
+    if (makeNumber >= 21 || makeNumber < 6) {
 
         if (description4 === 'clear') {
             description4 = 'night'
