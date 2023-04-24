@@ -2,6 +2,13 @@ const btn = document.getElementById('btn');
 const api = 'aa2ed12d93ba18e5ef77cfe8606163d5'
 const defaultCity = 'Belfast'
 
+// Create a new WebSocket connection
+
+
+// Disable caching for the current page
+
+
+
 
 
 let iconNow = document.getElementById('icon__now')
@@ -45,7 +52,7 @@ window.onload = () => {
 
         const urlOnload = `https://api.openweathermap.org/data/2.5/forecast?q=&lat=${lat}&lon=${lon}&appid=${api}&units=metric`
 
-        console.log(urlOnload)
+        // console.log(urlOnload)
 
 
         // const urlNav = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lat=${lat}&lon=${lon}&appid=${api}&units=metric`;
@@ -58,31 +65,20 @@ window.onload = () => {
                 dddd(data)
 
 
-                // const openWindowIcon = data.list[0].weather[0].description
-                // console.log(openWindowIcon)
-                // const openWindowDescription = openWindowIcon.split(' ')[0]
-                // const openWindowShowIcon = document.createElement('img')
-                // openWindowShowIcon.src = weatherClass[openWindowDescription]
-                // openWindowShowIcon.style.width = '120px'
-                // openWindowShowIcon.style.height = '120px'
 
-                // iconNow = document.getElementById('icon__now')
-
-                // iconNow.innerHTML = '';
-                // iconNow.appendChild(openWindowShowIcon)
 
                 twelveTime(data)
                 threeTime(data)
                 sixTime(data)
                 nineTime(data)
                 const time = data.list[0].dt_txt
-                console.log(time)
+                    // console.log(time)
                 const dataSplit = time.split(' ')[1]
                 const timeOnly = dataSplit.substring(0, 5)
                 document.getElementById('first__time').textContent = timeOnly
                     // 2nd time
                 const time2 = data.list[1].dt_txt
-                console.log(time2)
+                    // console.log(time2)
                 const dataSplit2 = time2.split(' ')[1]
                 const timeOnly2 = dataSplit2.substring(0, 5)
                 document.getElementById('second__time').textContent = timeOnly2
@@ -107,31 +103,20 @@ window.onload = () => {
 
 
                 const cityName = data.city.name;
-                console.log(cityName);
+                // console.log(cityName);
                 document.querySelector('.locationCity').textContent = cityName
 
                 const openWindow = data.list[0].main.temp;
                 const openWindowDecimal = Math.round(openWindow)
                 document.querySelector('.weather__temp').textContent = openWindowDecimal;
 
-                // const openWindowIcon = data.list[0].weather[0].description
-                // console.log(openWindowIcon)
-                // const openWindowDescription = openWindowIcon.split(' ')[0]
-                // const openWindowShowIcon = document.createElement('img')
-                // openWindowShowIcon.src = weatherClass[openWindowDescription]
-                // openWindowShowIcon.style.width = '120px'
-                // openWindowShowIcon.style.height = '120px'
 
-                // iconNow = document.getElementById('icon__now')
-
-                // iconNow.innerHTML = '';
-                // iconNow.appendChild(openWindowShowIcon)
-
-                // document.querySelector('.locationCity').textContent =
 
             })
     })
 }
+
+
 
 // https://api.openweathermap.org/data/2.5/forecast?q=kaunas&appid=aa2ed12d93ba18e5ef77cfe8606163d5&units=metric
 
@@ -151,7 +136,7 @@ btn.addEventListener('click', () => {
     //     const lon = position.coords.longitude;
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api}&units=metric`;
 
-    console.log(url)
+    // console.log(url)
     fetch(url)
         .then((Response) => Response.json())
         .then((data) => {
@@ -190,13 +175,13 @@ btn.addEventListener('click', () => {
 
             //   1st time
             const time = data.list[0].dt_txt
-            console.log(time)
+                // console.log(time)
             const dataSplit = time.split(' ')[1]
             const timeOnly = dataSplit.substring(0, 5)
             document.getElementById('first__time').textContent = timeOnly
                 // 2nd time
             const time2 = data.list[1].dt_txt
-            console.log(time2)
+                // console.log(time2)
             const dataSplit2 = time2.split(' ')[1]
             const timeOnly2 = dataSplit2.substring(0, 5)
             document.getElementById('second__time').textContent = timeOnly2
@@ -245,7 +230,7 @@ function btnChangeTemp(data) {
 function twelveTime(data) {
     // weatherNow()
     const time = data.list[0].dt_txt
-    console.log(time)
+        // console.log(time)
 
     const dataSplit = time.split(' ')[1]
     const timeOnly = dataSplit.substring(0, 5)
@@ -254,7 +239,7 @@ function twelveTime(data) {
     // document.getElementById('first__time').textContent = timeOnly
 
     const makeNumber = parseInt(timeOnly)
-    console.log(makeNumber)
+        // console.log(makeNumber)
 
     const tempTwelve = data.list[0].main.temp;
     const roundTempTwelve = Math.round(tempTwelve)
@@ -267,12 +252,12 @@ function twelveTime(data) {
     const airConditionTvelweTime = data.list[0].weather[0].description;
 
     let description1 = airConditionTvelweTime.split(' ')[0];
-    console.log(description1)
+    // console.log(description1)
 
 
 
 
-    if (makeNumber >= 21 || makeNumber < 6) {
+    if (makeNumber >= 21 || makeNumber <= 6) {
 
         if (description1 === 'clear') {
             description1 = 'night'
@@ -305,16 +290,16 @@ function twelveTime(data) {
 
 function threeTime(data) {
     const time = data.list[1].dt_txt
-    console.log(time)
+        // console.log(time)
 
     const dataSplit = time.split(' ')[1]
 
     const timeOnly = dataSplit.substring(0, 5)
-    console.log(timeOnly)
+        // console.log(timeOnly)
         // document.getElementById('first__time').textContent = timeOnly
 
     const makeNumber = parseInt(timeOnly)
-    console.log(makeNumber)
+        // console.log(makeNumber)
 
     const tempThree = data.list[1].main.temp;
     const roundTempThree = Math.round(tempThree)
@@ -323,7 +308,7 @@ function threeTime(data) {
 
     const airConditionThreeTime = data.list[1].weather[0].description;
     let description2 = airConditionThreeTime.split(' ')[0]
-    if (makeNumber >= 21 || makeNumber < 6) {
+    if (makeNumber >= 21 || makeNumber <= 6) {
 
         if (description2 === 'clear') {
             description2 = 'night'
@@ -347,16 +332,16 @@ function threeTime(data) {
 
 function sixTime(data) {
     const time = data.list[2].dt_txt
-    console.log(time)
+        // console.log(time)
 
     const dataSplit = time.split(' ')[1]
 
     const timeOnly = dataSplit.substring(0, 5)
-    console.log(timeOnly)
+        // console.log(timeOnly)
         // document.getElementById('first__time').textContent = timeOnly
 
     const makeNumber = parseInt(timeOnly)
-    console.log(makeNumber)
+        // console.log(makeNumber)
 
     const tempSix = data.list[2].main.temp;
     const roundTempSix = Math.round(tempSix)
@@ -365,7 +350,7 @@ function sixTime(data) {
 
     const airConditionSixTime = data.list[2].weather[0].description;
     let description3 = airConditionSixTime.split(' ')[0]
-    if (makeNumber >= 21 || makeNumber < 6) {
+    if (makeNumber >= 21 || makeNumber <= 6) {
 
         if (description3 === 'clear') {
             description3 = 'night'
@@ -377,7 +362,7 @@ function sixTime(data) {
             description3 = 'nightClouds'
         }
     }
-    console.log(description3)
+    // console.log(description3)
     const airConditionSix = document.createElement('img')
     airConditionSix.src = weatherClass[description3]
     airConditionSix.style.width = '50px'
@@ -390,16 +375,16 @@ function sixTime(data) {
 
 function nineTime(data) {
     const time = data.list[3].dt_txt
-    console.log(time)
+        // console.log(time)
 
     const dataSplit = time.split(' ')[1]
 
     const timeOnly = dataSplit.substring(0, 5)
-    console.log(timeOnly)
+        // console.log(timeOnly)
         // document.getElementById('first__time').textContent = timeOnly
 
     const makeNumber = parseInt(timeOnly)
-    console.log(makeNumber)
+        // console.log(makeNumber)
 
     const tempNine = data.list[3].main.temp;
     const roundTempNine = Math.round(tempNine)
@@ -407,7 +392,7 @@ function nineTime(data) {
 
     const airConditionNineTime = data.list[3].weather[0].description;
     let description4 = airConditionNineTime.split(' ')[0]
-    if (makeNumber >= 21 || makeNumber < 6) {
+    if (makeNumber >= 21 || makeNumber <= 6) {
 
         if (description4 === 'clear') {
             description4 = 'night'
@@ -431,9 +416,10 @@ function nineTime(data) {
 
 function dddd(data) {
     const openWindowIcon = data.list[0].weather[0].description
-    console.log(openWindowIcon)
+        // console.log(openWindowIcon)
     const openWindowDescription = openWindowIcon.split(' ')[0]
     const openWindowShowIcon = document.createElement('img')
+    openWindowShowIcon.setAttribute('alt', 'weather condition')
     openWindowShowIcon.src = weatherClass[openWindowDescription]
     openWindowShowIcon.style.width = '120px'
     openWindowShowIcon.style.height = '120px'
