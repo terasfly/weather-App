@@ -1,11 +1,17 @@
 const btn = document.getElementById('btn');
 const api = 'aa2ed12d93ba18e5ef77cfe8606163d5'
-const defaultCity = 'Belfast'
+    // const defaultCity = 'Belfast'
 
-// Create a new WebSocket connection
+function btnChangeTemp(data) {
+    const btnCity = data.list[0].main.temp
+    const roundBtnCity = Math.round(btnCity)
+    document.querySelector('.weather__temp').textContent = roundBtnCity
+
+    // document.querySelector('.locationCity').textContent = city
 
 
-// Disable caching for the current page
+
+}
 
 
 
@@ -14,35 +20,70 @@ const defaultCity = 'Belfast'
 let iconNow = document.getElementById('icon__now')
 
 const weatherClass = {
-    Clouds: 'images/cloud.svg',
-    broken: 'images/broken.svg',
-    Clear: 'images/sun.svg',
-    Snow: 'images/snow.svg',
-    few: 'images/broken.svg',
-    clear: 'images/sun.svg',
-    light: 'images/lightRain.svg',
-    overcast: 'images/cloud.svg',
-    scattered: 'images/broken.svg',
-    moderate: 'images/havy.svg',
-    night: 'images/clearNight.svg',
-    nightClouds: 'images/fewCloudsNight.svg'
+    Clouds: {
+        src: 'images/cloud.svg',
+        alt: 'Cloudy'
+    },
+    broken: {
+        src: 'images/broken.svg',
+        alt: 'Broken clouds'
+    },
+    Clear: {
+        src: 'images/sun.svg',
+        alt: 'Clear skies'
+    },
+    Snow: {
+        src: 'images/snow.svg',
+        alt: 'Snowy'
+    },
+    few: {
+        src: 'images/broken.svg',
+        alt: 'Few clouds'
+    },
+    clear: {
+        src: 'images/sun.svg',
+        alt: 'Clear skies'
+    },
+    light: {
+        src: 'images/lightRain.svg',
+        alt: 'Light rain'
+    },
+    overcast: {
+        src: 'images/cloud.svg',
+        alt: 'Overcast'
+    },
+    scattered: {
+        src: 'images/broken.svg',
+        alt: 'Scattered clouds'
+    },
+    moderate: {
+        src: 'images/havy.svg',
+        alt: 'Heavy rain'
+    },
+    night: {
+        src: 'images/clearNight.svg',
+        alt: 'Clear night'
+    },
+    nightClouds: {
+        src: 'images/fewCloudsNight.svg',
+        alt: 'Few clouds at night'
+    }
+};
 
-}
+// function dddd(data) {
+//     const openWindowIcon = data.list[0].weather[0].description
+//     console.log(openWindowIcon)
+//     const openWindowDescription = openWindowIcon.split(' ')[0]
+//     const openWindowShowIcon = document.createElement('img')
+//     openWindowShowIcon.src = weatherClass[openWindowDescription]
+//     openWindowShowIcon.style.width = '120px'
+//     openWindowShowIcon.style.height = '120px'
 
-function dddd(data) {
-    const openWindowIcon = data.list[0].weather[0].description
-    console.log(openWindowIcon)
-    const openWindowDescription = openWindowIcon.split(' ')[0]
-    const openWindowShowIcon = document.createElement('img')
-    openWindowShowIcon.src = weatherClass[openWindowDescription]
-    openWindowShowIcon.style.width = '120px'
-    openWindowShowIcon.style.height = '120px'
+//     iconNow = document.getElementById('icon__now')
 
-    iconNow = document.getElementById('icon__now')
-
-    iconNow.innerHTML = '';
-    iconNow.appendChild(openWindowShowIcon)
-}
+//     iconNow.innerHTML = '';
+//     iconNow.appendChild(openWindowShowIcon)
+// }
 
 window.onload = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -149,21 +190,7 @@ btn.addEventListener('click', () => {
 
             btnChangeTemp(data)
 
-            // WEATHER NOW FOR SELECTED CITY
-            // const openWindowIcon = data.list[0].weather[0].description
-            // console.log(openWindowIcon)
-            // const openWindowDescription = openWindowIcon.split(' ')[0]
-            // const openWindowShowIcon = document.createElement('img')
-            // openWindowShowIcon.src = weatherClass[openWindowDescription]
-            // openWindowShowIcon.style.width = '120px'
-            // openWindowShowIcon.style.height = '120px'
 
-            // iconNow = document.getElementById('icon__now')
-
-            // iconNow.innerHTML = '';
-            // iconNow.appendChild(openWindowShowIcon)
-
-            // **********************************
 
             const realTime = data.list[0].dt_txt
             const realTimeSplit = realTime.split(' ')[0]
@@ -214,16 +241,16 @@ btn.addEventListener('click', () => {
 
 
 
-function btnChangeTemp(data) {
-    const btnCity = data.list[0].main.temp
-    const roundBtnCity = Math.round(btnCity)
-    document.querySelector('.weather__temp').textContent = roundBtnCity
+// function btnChangeTemp(data) {
+//     const btnCity = data.list[0].main.temp
+//     const roundBtnCity = Math.round(btnCity)
+//     document.querySelector('.weather__temp').textContent = roundBtnCity
 
-    // document.querySelector('.locationCity').textContent = city
+//     // document.querySelector('.locationCity').textContent = city
 
 
 
-}
+// }
 
 
 // 12:00 o'clock
@@ -271,7 +298,8 @@ function twelveTime(data) {
     }
 
     const airConditionTvelwe = document.createElement('img')
-    airConditionTvelwe.src = weatherClass[description1]
+    airConditionTvelwe.src = weatherClass[description1].src
+    airConditionTvelwe.alt = 'weather condition'
     airConditionTvelwe.style.width = '50px'
     airConditionTvelwe.style.height = '50px'
 
@@ -321,7 +349,8 @@ function threeTime(data) {
         }
     }
     const airConditionThree = document.createElement('img')
-    airConditionThree.src = weatherClass[description2]
+    airConditionThree.src = weatherClass[description2].src
+    airConditionThree.alt = 'weather condition'
     airConditionThree.style.width = '50px'
     airConditionThree.style.height = '50px'
     const airConditionThreeSky = document.getElementById('airConditionThreeSky')
@@ -364,7 +393,8 @@ function sixTime(data) {
     }
     // console.log(description3)
     const airConditionSix = document.createElement('img')
-    airConditionSix.src = weatherClass[description3]
+    airConditionSix.src = weatherClass[description3].src
+    airConditionSix.alt = 'weather condition'
     airConditionSix.style.width = '50px'
     airConditionSix.style.height = '50px'
     const airConditionSixSky = document.getElementById('airConditionSixSky')
@@ -405,7 +435,9 @@ function nineTime(data) {
         }
     }
     const airConditionNine = document.createElement('img')
-    airConditionNine.src = weatherClass[description4]
+    airConditionNine.src = weatherClass[description4].src
+    airConditionNine.alt = 'weather condition'
+
     airConditionNine.style.width = '50px'
     airConditionNine.style.height = '50px'
     const airConditionNineSky = document.getElementById('airConditionNineSky')
@@ -420,7 +452,7 @@ function dddd(data) {
     const openWindowDescription = openWindowIcon.split(' ')[0]
     const openWindowShowIcon = document.createElement('img')
     openWindowShowIcon.setAttribute('alt', 'weather condition')
-    openWindowShowIcon.src = weatherClass[openWindowDescription]
+    openWindowShowIcon.src = weatherClass[openWindowDescription].src
     openWindowShowIcon.style.width = '120px'
     openWindowShowIcon.style.height = '120px'
 
