@@ -1,24 +1,3 @@
-const btn = document.getElementById('btn');
-const api = 'aa2ed12d93ba18e5ef77cfe8606163d5'
-    // const defaultCity = 'Belfast'
-
-function btnChangeTemp(data) {
-    const btnCity = data.list[0].main.temp
-    const roundBtnCity = Math.round(btnCity)
-    document.querySelector('.weather__temp').textContent = roundBtnCity
-
-    // document.querySelector('.locationCity').textContent = city
-
-
-
-}
-
-
-
-
-
-let iconNow = document.getElementById('icon__now')
-
 const weatherClass = {
     Clouds: {
         src: 'images/cloud.svg',
@@ -70,20 +49,32 @@ const weatherClass = {
     }
 };
 
-// function dddd(data) {
-//     const openWindowIcon = data.list[0].weather[0].description
-//     console.log(openWindowIcon)
-//     const openWindowDescription = openWindowIcon.split(' ')[0]
-//     const openWindowShowIcon = document.createElement('img')
-//     openWindowShowIcon.src = weatherClass[openWindowDescription]
-//     openWindowShowIcon.style.width = '120px'
-//     openWindowShowIcon.style.height = '120px'
 
-//     iconNow = document.getElementById('icon__now')
 
-//     iconNow.innerHTML = '';
-//     iconNow.appendChild(openWindowShowIcon)
-// }
+
+
+const btn = document.getElementById('btn');
+const api = 'aa2ed12d93ba18e5ef77cfe8606163d5'
+    // const defaultCity = 'Belfast'
+let iconNow = document.getElementById('icon__now')
+
+function btnChangeTemp(data) {
+    const btnCity = data.list[0].main.temp
+    const roundBtnCity = Math.round(btnCity)
+    document.querySelector('.weather__temp').textContent = roundBtnCity
+
+    // document.querySelector('.locationCity').textContent = city
+
+
+
+}
+
+
+
+
+
+// let iconNow = document.getElementById('icon__now')
+
 
 window.onload = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -105,42 +96,45 @@ window.onload = () => {
                 // get location NAME
                 dddd(data)
 
-
+                timeOnly4(data)
+                timeOnly3(data)
+                timeOnly2(data)
+                timeOnly1(data)
 
 
                 twelveTime(data)
                 threeTime(data)
                 sixTime(data)
                 nineTime(data)
-                const time = data.list[0].dt_txt
-                    // console.log(time)
-                const dataSplit = time.split(' ')[1]
-                const timeOnly = dataSplit.substring(0, 5)
-                document.getElementById('first__time').textContent = timeOnly
+                    // const time = data.list[0].dt_txt
+                    //     // console.log(time)
+                    // const dataSplit = time.split(' ')[1]
+                    // const timeOnly = dataSplit.substring(0, 5)
+                    // document.getElementById('first__time').textContent = timeOnly
                     // 2nd time
-                const time2 = data.list[1].dt_txt
-                    // console.log(time2)
-                const dataSplit2 = time2.split(' ')[1]
-                const timeOnly2 = dataSplit2.substring(0, 5)
-                document.getElementById('second__time').textContent = timeOnly2
+                    // const time2 = data.list[1].dt_txt
+                    //     // console.log(time2)
+                    // const dataSplit2 = time2.split(' ')[1]
+                    // const timeOnly2 = dataSplit2.substring(0, 5)
+                    // document.getElementById('second__time').textContent = timeOnly2
                     //    3rd time     
 
-                const time3 = data.list[2].dt_txt
-                    // console.log(time2)
-                const dataSplit3 = time3.split(' ')[1]
-                const timeOnly3 = dataSplit3.substring(0, 5)
-                document.getElementById('third__time').textContent = timeOnly3
-                    // 4 time
-                const time4 = data.list[3].dt_txt
-                    // console.log(time2)
-                const dataSplit4 = time4.split(' ')[1]
-                const timeOnly4 = dataSplit4.substring(0, 5)
-                document.getElementById('four__time').textContent = timeOnly4
+                // const time3 = data.list[2].dt_txt
+                //     // console.log(time2)
+                // const dataSplit3 = time3.split(' ')[1]
+                // const timeOnly3 = dataSplit3.substring(0, 5)
+                // document.getElementById('third__time').textContent = timeOnly3
+                // 4 time
+                // const time4 = data.list[3].dt_txt
+                //     // console.log(time2)
+                // const dataSplit4 = time4.split(' ')[1]
+                // const timeOnly4 = dataSplit4.substring(0, 5)
+                // document.getElementById('four__time').textContent = timeOnly4
 
-                const realTime = data.list[0].dt_txt
-                const realTimeSplit = realTime.split(' ')[0]
-                const realTimeOnly = realTimeSplit.substring(0, 10)
-                document.getElementById('date').textContent = realTimeOnly
+                // const realTime = data.list[0].dt_txt
+                // const realTimeSplit = realTime.split(' ')[0]
+                // const realTimeOnly = realTimeSplit.substring(0, 10)
+                // document.getElementById('date').textContent = realTimeOnly
 
 
                 const cityName = data.city.name;
@@ -157,7 +151,44 @@ window.onload = () => {
     })
 }
 
+function timeOnly1(data) {
+    const time = data.list[0].dt_txt
+        // console.log(time)
+    const dataSplit = time.split(' ')[1]
+    const timeOnly = dataSplit.substring(0, 5)
+    document.getElementById('first__time').textContent = timeOnly
+}
 
+function timeOnly2(data) {
+    const time2 = data.list[1].dt_txt
+        // console.log(time2)
+    const dataSplit2 = time2.split(' ')[1]
+    const timeOnly2 = dataSplit2.substring(0, 5)
+    document.getElementById('second__time').textContent = timeOnly2
+}
+
+function timeOnly3(data) {
+
+    const time3 = data.list[2].dt_txt
+        // console.log(time2)
+    const dataSplit3 = time3.split(' ')[1]
+    const timeOnly3 = dataSplit3.substring(0, 5)
+    document.getElementById('third__time').textContent = timeOnly3
+}
+
+
+function timeOnly4(data) {
+    const time4 = data.list[3].dt_txt
+        // console.log(time2)
+    const dataSplit4 = time4.split(' ')[1]
+    const timeOnly4 = dataSplit4.substring(0, 5)
+    document.getElementById('four__time').textContent = timeOnly4
+
+    const realTime = data.list[0].dt_txt
+    const realTimeSplit = realTime.split(' ')[0]
+    const realTimeOnly = realTimeSplit.substring(0, 10)
+    document.getElementById('date').textContent = realTimeOnly
+}
 
 // https://api.openweathermap.org/data/2.5/forecast?q=kaunas&appid=aa2ed12d93ba18e5ef77cfe8606163d5&units=metric
 
@@ -447,12 +478,36 @@ function nineTime(data) {
 }
 
 function dddd(data) {
+    const timeTimeNow = data.list[0].dt_txt
+
+
+    const dataSplit = timeTimeNow.split(' ')[1]
+    const timeOnly = dataSplit.substring(0, 5)
+
+
+
+    const getTime = parseInt(timeOnly)
     const openWindowIcon = data.list[0].weather[0].description
-        // console.log(openWindowIcon)
-    const openWindowDescription = openWindowIcon.split(' ')[0]
+
+    // console.log(openWindowIcon)
+    let description5 = openWindowIcon.split(' ')[0]
+    if (getTime >= 21 || getTime <= 6) {
+
+        if (description5 === 'clear') {
+            description5 = 'night'
+        } else if (description5 === 'few') {
+            description5 = 'nightClouds'
+        } else if (description5 === 'broken') {
+            description5 = 'nightClouds'
+        } else if (description5 === 'scattered') {
+            description5 = 'nightClouds'
+        }
+    }
+
+
     const openWindowShowIcon = document.createElement('img')
     openWindowShowIcon.setAttribute('alt', 'weather condition')
-    openWindowShowIcon.src = weatherClass[openWindowDescription].src
+    openWindowShowIcon.src = weatherClass[description5].src
     openWindowShowIcon.style.width = '120px'
     openWindowShowIcon.style.height = '120px'
 
